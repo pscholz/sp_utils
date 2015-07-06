@@ -1,5 +1,6 @@
 import numpy as _np
 import fileinput as _fileinput
+import sp_utils
 
 def read_sp_files(files):
     """Read all *.singlepulse files in the current directory in a DM range.
@@ -157,9 +158,9 @@ def read_spd(spd_file, tar = None):
                                  Default: not supplied. 
        Output: An object that has all the relevant information to remake the plot. 
     """
-    sp = spd(spd_file)
+    sp = sp_utils.spd(spd_file)
     if tar is not None:
-        dmVt_dms, dmVt_times, dmVt_sigmas, dmVt_files = gen_arrays(sp.dmVt_this_dms, threshold = 5, sp.spfiles, tar)
+        dmVt_dms, dmVt_times, dmVt_sigmas, dmVt_files = gen_arrays(sp.dmVt_this_dms, 5, sp.spfiles, tar)
         sp.dmVt_dms = dmVt_dms
         sp.dmVt_times = dmVt_times
         sp.dmVt_sigmas = dmVt_sigmas
